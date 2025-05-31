@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkansas Market Dynamics: An In-Depth Infographic Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light Gray-Blue background */
+            color: #073B4C; /* Midnight Green/Dark Blue for primary text */
+        }
+        .header-accent {
+            background-color: #118AB2; /* Blue NCS */
+            color: white;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #06D6A0; /* Caribbean Green */
+        }
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #073B4C; /* Midnight Green/Dark Blue */
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #118AB2; /* Blue NCS */
+        }
+        .sub-section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #118AB2; /* Blue NCS */
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .swot-item {
+            padding: 1rem;
+            border-radius: 0.375rem;
+        }
+        .swot-strengths { background-color: #E6FFFA; border-left: 5px solid #06D6A0; } /* Light Caribbean Green */
+        .swot-weaknesses { background-color: #FFF5F5; border-left: 5px solid #FF6B6B; } /* Light Coral Red */
+        .swot-opportunities { background-color: #FEFCBF; border-left: 5px solid #FFD166; } /* Light Sunglow Yellow */
+        .swot-threats { background-color: #EBF4FF; border-left: 5px solid #118AB2; } /* Light Blue NCS */
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #118AB2; /* Blue NCS */
+        }
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 40px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #FFD166; /* Sunglow Yellow */
+            border: 3px solid #118AB2; /* Blue NCS */
+        }
+        .timeline-item-content {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .flowchart-node {
+            background-color: #EBF4FF; /* Light Blue NCS */
+            border: 2px solid #118AB2; /* Blue NCS */
+            color: #073B4C;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 0.5rem;
+        }
+        .flowchart-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #118AB2; /* Blue NCS */
+            margin: 0.25rem 0;
+        }
+        .accent-text-green { color: #06D6A0; }
+        .accent-text-yellow { color: #FFD166; }
+        .accent-text-red { color: #FF6B6B; }
+        .accent-text-blue { color: #118AB2; }
+        .accent-bg-green { background-color: #06D6A0; }
+        .accent-bg-yellow { background-color: #FFD166; }
+        .accent-bg-red { background-color: #FF6B6B; }
+        .accent-bg-blue { background-color: #118AB2; }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        nav ul li a {
+            padding: 0.5rem 0.75rem;
+            text-decoration: none;
+            color: #073B4C;
+            font-weight: 500;
+            border-radius: 0.25rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #118AB2;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <header class="header-accent py-8 text-center">
+        <h1 class="text-4xl font-bold tracking-tight">Arkansas Market Dynamics</h1>
+        <p class="mt-2 text-lg opacity-90">An In-Depth Infographic Analysis of Political-Economic Trends & Strategic Imperatives</p>
+    </header>
+
+    <nav id="infographic-nav">
+        <ul>
+            <li><a href="#market-overview">Market Overview</a></li>
+            <li><a href="#dominant-players">Dominant Players</a></li>
+            <li><a href="#consumer-segments">Consumer Segments</a></li>
+            <li><a href="#competitive-landscape">Competitive Landscape</a></li>
+            <li><a href="#market-trends">Market Trends</a></li>
+            <li><a href="#swot-analysis">SWOT Analysis</a></li>
+            <li><a href="#market-evolution">Market Evolution</a></li>
+            <li><a href="#future-outlook">Future Outlook</a></li>
+        </ul>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+
+        <section id="market-overview" class="card">
+            <h2 class="section-title">Market Overview & Regulatory Framework</h2>
+            <p class="mb-6 text-gray-700 leading-relaxed">The Arkansas "market," referring to its political-economic operational sphere, presents a complex environment characterized by deeply entrenched interests and a regulatory framework heavily influenced by dominant capital formations. Understanding this landscape is paramount for any entity seeking to navigate or influence its trajectory. The formal state apparatus, while presenting a facade of democratic governance, functions primarily as an executive committee for established bourgeois interests, particularly within agribusiness, retail, and finance. This section delves into the overarching fiscal dimensions and the key regulatory bodies shaping market conditions, revealing a system where policy often prioritizes corporate expansion and elite accumulation over broader public welfare. The current administration, under Governor Sarah Huckabee Sanders, has further solidified a far-right, corporate-aligned agenda, intensifying the challenges and opportunities for various market actors and stakeholders. This includes a pronounced push towards privatization in sectors like education, and a systematic weakening of environmental and labor protections, all framed under populist rhetoric that belies the true beneficiaries of these policies. The state's regulatory agencies, often subject to capture by the industries they oversee, play a critical role in maintaining this favorable climate for dominant capital, creating significant barriers for new entrants or alternative models that might challenge the status quo.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="sub-section-title">State Operational Budget (Illustrative)</h3>
+                    <div class="text-center my-4">
+                        <p class="stat-number">$6.3B</p>
+                        <p class="text-gray-600 text-lg">Approx. Annual State Budget (FY2024)</p>
+                        <p class="mt-2 text-sm text-gray-500 leading-relaxed">This substantial figure, while indicative of significant state operations, is subject to allocation priorities heavily influenced by dominant political and corporate interests. A critical examination reveals disproportionate funding towards sectors benefiting established capital, often at the expense of social programs, public infrastructure, and environmental protection. The allocation process itself is a key arena where market power is exerted, with lobbying and political contributions playing a significant role in shaping fiscal outcomes. This budget, therefore, is not merely a financial document but a reflection of the prevailing power dynamics within the Arkansas market.</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="sub-section-title">Executive Branch: Regulatory Power Centers</h3>
+                    <p class="mb-4 text-gray-600 leading-relaxed">The executive branch, led by the Governor, directs key state agencies that form the primary regulatory interface for market operations. These agencies, while tasked with public oversight, are frequent targets of corporate influence and political pressure, shaping their enforcement and policymaking functions. The current administration has actively appointed individuals aligned with its pro-business, deregulatory agenda to lead these critical bodies, further entrenching the influence of dominant market players.</p>
+                    <div class="space-y-3">
+                        <div class="flowchart-node">Governor's Office (Sarah Huckabee Sanders) - Sets Agenda</div>
+                        <div class="flowchart-arrow">▼</div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="flowchart-node">Dept. of Commerce / AEDC (Corporate Subsidies, "Business Climate")</div>
+                            <div class="flowchart-node">Dept. of Education / ADE (LEARNS Act Implementation, Privatization)</div>
+                            <div class="flowchart-node">Dept. of Environmental Quality (ADEQ) (Industry Regulation, Often Captured)</div>
+                            <div class="flowchart-node">Dept. of Human Services (DHS) (Social Safety Net, Austerity Pressures)</div>
+                            <div class="flowchart-node">Attorney General (Legal Enforcement of State Agenda)</div>
+                            <div class="flowchart-node">Dept. of Corrections (ADC) (Carceral System Management)</div>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-500 leading-relaxed">This simplified structure highlights the centralized control and the key agencies through which market conditions are defined and enforced. Each node represents a significant point of leverage and influence for dominant economic actors, and conversely, a potential target for strategic intervention by those seeking to challenge the status quo. The interplay between these agencies and the legislative branch further solidifies the existing power structures.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dominant-players" class="card">
+            <h2 class="section-title">Dominant Market Players & Influence Mapping</h2>
+            <p class="mb-6 text-gray-700 leading-relaxed">The Arkansas market is characterized by the significant influence of a concentrated set of corporate players, primarily in sectors such as retail, agribusiness, finance, and energy. These entities exert considerable sway over policy and regulatory outcomes through sophisticated lobbying efforts, substantial campaign contributions, and the cultivation of deep-rooted networks within the state's political establishment. Their "market share" of influence often translates directly into favorable legislation, tax structures, and a regulatory environment conducive to their continued growth and profitability, frequently at the expense of smaller competitors, labor rights, and environmental sustainability. Understanding the scale and mechanisms of this dominance is crucial for assessing the true competitive dynamics and identifying barriers to entry for alternative economic models or public interest initiatives. The pervasive nature of this influence extends beyond direct lobbying to include shaping public discourse through philanthropic activities and media ownership, further cementing their hegemonic position within the state's political economy.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="sub-section-title">Conceptual "Influence Share" by Key Sectors</h3>
+                    <p class="mb-2 text-sm text-gray-500 leading-relaxed">Illustrative breakdown of perceived political-economic influence exerted by major industry sectors within Arkansas. This reflects their ability to shape legislation, regulatory environments, and public discourse. The dominance of retail and agribusiness is particularly pronounced, reflecting the historical and contemporary economic pillars of the state.</p>
+                    <div class="chart-container mx-auto h-80 md:h-96">
+                        <canvas id="influenceShareChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="sub-section-title">Top Lobbying Spenders (Illustrative Annual)</h3>
+                     <p class="mb-2 text-sm text-gray-500 leading-relaxed">Representation of significant financial investment by key corporate players and industry associations aimed at directly influencing legislative and regulatory outcomes. These figures underscore the financial power wielded to maintain favorable market conditions and policy frameworks.</p>
+                    <div class="chart-container mx-auto h-80 md:h-96">
+                        <canvas id="lobbyingSpendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+             <p class="mt-6 text-gray-600 leading-relaxed">The data presented, though illustrative, points towards a market where a few large entities, notably Walmart and Tyson Foods, alongside powerful financial institutions like Stephens Inc. and regulated utilities such as Entergy, hold disproportionate sway. Their strategic deployment of capital through lobbying and campaign finance ensures that their interests are consistently prioritized in policy-making. This concentration of influence creates a challenging environment for smaller businesses, labor organizations, and public interest groups seeking to advocate for alternative policies or a more equitable distribution of resources and opportunities. The "revolving door" phenomenon, where former legislators and regulators transition into lucrative lobbying roles, further solidifies these channels of influence, creating a deeply entrenched system of corporate capture that is resistant to reform from within conventional political channels.</p>
+        </section>
+
+        <section id="consumer-segments" class="card">
+            <h2 class="section-title">Emerging "Consumer" Segments & Untapped "Market" Potential for Change</h2>
+            <p class="mb-6 text-gray-700 leading-relaxed">Beyond the dominant players, the Arkansas "market" comprises diverse "consumer" segments—populations whose needs and demands are often inadequately addressed by the prevailing political-economic system. These segments, including communities impacted by regressive policies, low-wage workers, and marginalized groups, represent significant untapped "market potential" for alternative narratives and transformative change. Their growing awareness of systemic inequities and the tangible impacts of policies like the LEARNS Act or persistent healthcare disparities are creating fertile ground for new forms of organization and mobilization. These are not passive consumers but active agents whose collective action can reshape market dynamics and challenge established power structures. Identifying and understanding the specific grievances and aspirations of these segments is critical for developing effective strategies for engagement and empowerment, effectively turning areas of discontent into catalysts for systemic shifts. The failure of the current system to meet their fundamental needs creates openings for movements and organizations that can offer viable alternatives and a pathway to greater equity and justice.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="sub-section-title">Impact of Key Policies on "Consumer" Segments (Illustrative)</h3>
+                    <p class="mb-2 text-sm text-gray-500 leading-relaxed">Visualization of how major state policies disproportionately affect various demographic and economic segments. This highlights areas of significant social and economic stress, which can translate into potent drivers for socio-political mobilization and demand for alternative solutions. The data underscores the uneven distribution of policy burdens and benefits.</p>
+                    <div class="chart-container mx-auto h-80 md:h-96">
+                        <canvas id="policyImpactChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="sub-section-title">Key "Market Segments" Driving Demand for Change</h3>
+                    <p class="mb-4 text-gray-600 leading-relaxed">Numerous grassroots organizations and community initiatives are actively working to address systemic inequities and advocate for progressive change. These groups represent organized "consumer demand" for a more just and equitable market environment. Their efforts, while often under-resourced, are crucial in challenging the status quo and building alternative power structures.</p>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li><strong class="accent-text-green">Racial Justice Collectives:</strong> (e.g., BLM Chapters, NAACP) - Addressing systemic racism, police brutality. Their work highlights deep-seated market failures in providing equitable opportunities and safety for Black communities.</li>
+                        <li><strong class="accent-text-blue">Economic & Labor Advocates:</strong> (e.g., AR AFL-CIO, Arkansas Public Policy Panel) - Fighting for fair wages, worker rights, and against corporate exploitation. They represent the demand for a labor market that values human dignity over profit maximization.</li>
+                        <li><strong class="accent-text-yellow">Environmental Justice Groups:</strong> (e.g., Sierra Club AR) - Protecting natural resources and communities from industrial pollution. Their advocacy points to the externalized costs of dominant industries and the need for sustainable market practices.</li>
+                        <li><strong class="accent-text-red">LGBTQ+ Rights Organizations:</strong> (e.g., HRC Arkansas, Intransitive) - Campaigning for equality, safety, and against discriminatory policies. They represent a significant segment demanding inclusive market participation and social recognition.</li>
+                        <li><strong class="accent-text-green">Reproductive Justice Networks:</strong> (e.g., Arkansas Abortion Support Network) - Ensuring access to essential healthcare and bodily autonomy. Their work addresses critical failures in the healthcare market, particularly for women and marginalized genders.</li>
+                        <li><strong class="accent-text-blue">Immigrant Rights Groups:</strong> (e.g., Arkansas United) - Supporting immigrant communities and advocating for fair treatment. They highlight the exploitation often faced by immigrant labor and the need for inclusive social and economic systems.</li>
+                    </ul>
+                    <p class="mt-4 text-sm text-gray-500 leading-relaxed">These segments, often overlapping and interconnected, constitute a powerful, if currently fragmented, counter-force to the dominant market interests. Their collective mobilization and strategic alignment represent the most significant potential for disrupting the existing political-economic equilibrium and fostering a transition towards a more democratic and equitable "market" that serves the many, not the few. The unmet needs and aspirations of these communities are not just social issues but indicators of profound market inefficiencies and ethical failings that demand urgent and systemic redress.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="competitive-landscape" class="card">
+            <h2 class="section-title">Competitive Landscape & Strategic Alliances</h2>
+            <p class="mb-6 text-gray-700 leading-relaxed">The "competitive landscape" within Arkansas's political-economic market is largely defined by the interplay between the two major political parties and the various informal power networks that transcend formal structures. While ostensibly offering choice, this landscape is heavily skewed towards maintaining the existing capitalist order, with the Republican Party serving as the primary vehicle for reactionary and corporate interests. The Democratic Party, often struggling for relevance and ideological clarity, presents a limited challenge, frequently operating within the same overarching economic paradigms. Understanding the factions, funding sources, and strategic alliances within and between these entities is crucial for identifying opportunities to disrupt established hegemonies and build alternative power bases. The influence of national organizations like ALEC and well-funded Christian Nationalist networks further complicates this landscape, providing external support and ideological coherence to reactionary forces, thereby creating significant hurdles for progressive movements seeking to gain traction and implement systemic change.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="sub-section-title">Dominant Political "Brands" & Factional Analysis</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-lg accent-text-red">🟥 Republican Party of Arkansas (ARGOP)</h4>
+                            <p class="text-sm text-gray-600 mb-2 leading-relaxed">The dominant "brand," effectively controlling most levers of state power. Its market strategy relies on a coalition of corporate capital and a mobilized base animated by cultural grievances and Christian nationalism. This dual approach allows it to serve elite economic interests while maintaining popular support through divisive social rhetoric.</p>
+                            <div class="ml-4 space-y-1">
+                                <div class="flowchart-node text-sm">MAGA/Far-Right Wing (Cultural/Nationalist Appeal)</div>
+                                <div class="flowchart-node text-sm">"Business Establishment" Wing (Corporate/Fiscal Focus)</div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg accent-text-blue">🟧 Democratic Party of Arkansas (ARDEMS)</h4>
+                            <p class="text-sm text-gray-600 mb-2 leading-relaxed">A marginalized "brand" struggling to define its market position and effectively counter ARGOP dominance. It attempts to appeal to a diverse coalition but is often hampered by internal ideological divisions and a reluctance to fundamentally challenge dominant corporate interests. Its resource base is significantly smaller, limiting its competitive capacity.</p>
+                            <div class="ml-4 space-y-1">
+                                <div class="flowchart-node text-sm">Centrist/"Moderate" Wing (Incrementalism, "Electability" Focus)</div>
+                                <div class="flowchart-node text-sm accent-bg-green text-white">Emergent Progressive Wing (Systemic Change Advocacy)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="sub-section-title">Key Informal Power Networks & Alliances</h3>
+                    <p class="mb-4 text-gray-600 leading-relaxed">Beyond formal party structures, influential networks shape the competitive dynamics, often operating behind the scenes to coordinate strategy, channel resources, and enforce ideological discipline. These networks represent powerful, often opaque, forces within the market.</p>
+                    <ul class="list-none space-y-3">
+                        <li class="p-3 rounded bg-red-50 border-l-4 border-red-500">
+                            <strong class="text-red-700">Christian Nationalist Networks:</strong> Highly organized, influencing social policy and mobilizing a significant voter bloc for the ARGOP. Their alliance with the party's far-right wing is a cornerstone of its power.
+                        </li>
+                        <li class="p-3 rounded bg-yellow-50 border-l-4 border-yellow-500">
+                            <strong class="text-yellow-700">Corporate Lobbyist Alliances:</strong> Coalitions of lobbyists representing major industries (e.g., poultry, energy, finance) that coordinate efforts to secure favorable legislation and deregulation, effectively forming a powerful pro-business bloc.
+                        </li>
+                        <li class="p-3 rounded bg-blue-50 border-l-4 border-blue-500">
+                            <strong class="text-blue-700">ALEC (American Legislative Exchange Council) Influence:</strong> Provides model legislation and a networking platform for right-wing legislators and corporate interests, promoting a national agenda of deregulation and privatization at the state level.
+                        </li>
+                         <li class="p-3 rounded bg-green-50 border-l-4 border-green-500">
+                            <strong class="text-green-700">Progressive Advocacy Coalitions (Emerging):</strong> Loose alliances of social justice, environmental, and labor groups attempting to coordinate efforts and build counter-power, though often facing resource and organizational challenges compared to established reactionary networks. 🔗🔗🔗
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="mt-6 text-gray-600 leading-relaxed">The competitive terrain is thus characterized by a deeply entrenched incumbency advantage for reactionary forces, buttressed by significant financial resources and well-established informal networks. For progressive and revolutionary forces, the challenge lies in building comparable levels of organization, resource mobilization, and strategic coherence. This involves not only strengthening individual organizations but also fostering robust, ideologically grounded alliances capable of mounting a sustained challenge to the dominant political-economic order. The internal contradictions within the ruling bloc, such as tensions between different capitalist factions or between the populist base and elite interests, may offer tactical openings for disruption and realignment if skillfully exploited.</p>
+        </section>
+
+        <section id="market-trends" class="card">
+            <h2 class="section-title">Prevailing Market Trends & Policy Trajectories</h2>
+            <p class="mb-6 text-gray-700 leading-relaxed">Several key "market trends," driven by dominant policy trajectories, are shaping the current and future landscape of Arkansas's political economy. These trends, largely orchestrated by the controlling political and corporate interests, indicate a continued movement towards privatization, deregulation, and the consolidation of power within established elite structures. Understanding these overarching trends is essential for anticipating future challenges and identifying strategic points for intervention and resistance. These are not immutable forces but rather the outcomes of deliberate policy choices, which can be contested and potentially reversed through organized counter-efforts. The long-term implications of these trends point towards increased social and economic inequality, further erosion of public services, and heightened vulnerability for marginalized communities, unless significant shifts in power dynamics occur.</p>
+            <div class="chart-container mx-auto">
+                <canvas id="policyTrendChart"></canvas>
+            </div>
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="font-semibold text-lg mb-2 accent-text-red">Trend 1: Aggressive Privatization of Public Goods</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">A significant and accelerating trend is the transfer of public services and assets into private hands, most notably in education through the LEARNS Act's universal voucher system. This trend extends to discussions around correctional facilities, infrastructure projects, and even aspects of social service delivery. The purported rationale is "efficiency" and "choice," but the underlying drivers are often profit motives for private corporations and an ideological commitment to shrinking the public sphere. This leads to reduced public accountability, potential for service degradation for those unable to access private options, and the creation of new markets for capital accumulation at the expense of public welfare. The long-term impact is a two-tiered system where quality services are increasingly available only to those who can afford to pay, exacerbating existing inequalities.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-2 accent-text-yellow">Trend 2: Sustained Deregulation & Weakening of Protections</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Under the banner of creating a "business-friendly climate," there is a consistent push to dismantle environmental regulations, labor protections, and consumer safeguards. This trend benefits industries like poultry, manufacturing, and energy by reducing their compliance costs, but it externalizes significant social and environmental costs onto communities and workers. Weakened enforcement by agencies like ADEQ further emboldens corporate actors to prioritize profit over public health and safety. This trajectory not only harms the environment and worker well-being but also makes the state more vulnerable to corporate malfeasance and industrial accidents, with limited recourse for affected communities.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-2 accent-text-blue">Trend 3: Consolidation of Far-Right Political Power & "Culture War" Escalation</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">The political landscape shows a clear trend towards the consolidation of far-right power, with an increasing focus on divisive "culture war" issues (e.g., anti-LGBTQ+ legislation, attacks on "critical race theory," book bans). This serves multiple purposes: it mobilizes a key segment of the voter base, distracts from unpopular economic policies that benefit the elite, and attempts to impose a narrow, reactionary social agenda. This trend creates a hostile environment for marginalized communities and curtails academic freedom and open discourse, further entrenching a climate of intolerance and suppressing dissent against the dominant order.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-2 accent-text-green">Trend 4: Growing Grassroots Resistance & Demand for Systemic Alternatives (Counter-Trend)</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">In response to the aforementioned trends, there is a noticeable, albeit still developing, counter-trend of increased grassroots activism and a growing demand for systemic alternatives. Mobilizations around public education, racial justice, reproductive rights, and environmental protection indicate a rising level of discontent and a willingness to challenge the status quo. While facing significant obstacles, this counter-trend represents the most potent force for potential market disruption and a shift towards more equitable and democratic outcomes. The ability of these movements to build broad coalitions and sustain their efforts will be critical in shaping the future market trajectory.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="swot-analysis" class="card">
+            <h2 class="section-title">Strategic Market Analysis (SWOT) for Progressive Change</h2>
+            <p class="mb-6 text-gray-700 leading-relaxed">A strategic assessment of the Arkansas political-economic market from the perspective of forces seeking progressive and revolutionary change reveals a complex interplay of internal strengths within emerging movements, significant weaknesses inherent in their current positioning, substantial opportunities arising from systemic contradictions and public discontent, and formidable threats posed by the entrenched power structures. This SWOT (Strengths, Weaknesses, Opportunities, Threats) analysis aims to provide a clear framework for developing effective strategies to advance anti-oppression agendas and build transformative power. Acknowledging both the daunting challenges and the very real possibilities for change is crucial for sustained and impactful engagement in this contested market.</p>
+            <div class="swot-grid">
+                <div class="swot-item swot-strengths">
+                    <h3 class="font-bold text-xl mb-2 text-green-700">Strengths (Internal Capacities of Change Agents)</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                        <li>Growing grassroots activism and diverse leadership in key movements (racial justice, LGBTQ+, education).</li>
+                        <li>Deep commitment and resilience among activists and community organizers.</li>
+                        <li>Increasing use of intersectional analyses to connect various struggles.</li>
+                        <li>Strong moral authority on issues of justice and equity.</li>
+                        <li>Development of mutual aid networks providing tangible community support.</li>
+                        <li>Emergence of independent media challenging dominant narratives.</li>
+                        <li>Historical legacy of resistance providing inspiration and legitimacy.</li>
+                    </ul>
+                </div>
+                <div class="swot-item swot-weaknesses">
+                    <h3 class="font-bold text-xl mb-2 text-red-700">Weaknesses (Internal Limitations of Change Agents)</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                        <li>Significant resource disparities compared to established power structures (funding, staffing).</li>
+                        <li>Fragmentation among some progressive groups and lack of unified statewide strategy.</li>
+                        <li>Limited reach into rural and deeply conservative areas.</li>
+                        <li>Challenges in sustaining long-term mobilization and avoiding burnout.</li>
+                        <li>Underdeveloped infrastructure for large-scale political education and organizing.</li>
+                        <li>Vulnerability to co-optation by liberal reformism that blunts radical critique.</li>
+                        <li>Difficulty in effectively countering sophisticated disinformation campaigns.</li>
+                    </ul>
+                </div>
+                <div class="swot-item swot-opportunities">
+                    <h3 class="font-bold text-xl mb-2 text-yellow-700">Opportunities (External Factors to Leverage)</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                        <li>Widespread public discontent with specific harmful policies (e.g., LEARNS Act, healthcare failures).</li>
+                        <li>Internal contradictions and factionalism within the dominant Republican party.</li>
+                        <li>Overreach by reactionary forces leading to potential backlash from broader public.</li>
+                        <li>Economic precarity and inequality creating demand for systemic economic change.</li>
+                        <li>Growing national awareness of social justice issues providing external support/allies.</li>
+                        <li>Visible impacts of environmental degradation creating openings for green coalitions.</li>
+                        <li>Potential to build broader coalitions by highlighting shared grievances against corporate power.</li>
+                        <li>Demographic shifts that may alter the electorate over the long term.</li>
+                    </ul>
+                </div>
+                <div class="swot-item swot-threats">
+                    <h3 class="font-bold text-xl mb-2 text-blue-700">Threats (External Challenges to Overcome)</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                        <li>Entrenched Republican supermajorities in all branches of state government.</li>
+                        <li>Massive financial and lobbying power of corporations and right-wing networks.</li>
+                        <li>Dominance of conservative media and sophisticated propaganda apparatuses.</li>
+                        <li>Voter suppression tactics and gerrymandering limiting democratic participation.</li>
+                        <li>Potential for state repression, surveillance, and legal attacks on activists/organizations.</li>
+                        <li>Deep-seated cultural conservatism and racial prejudice in parts of the population.</li>
+                        <li>Apathy or cynicism among segments of the population due to perceived powerlessness.</li>
+                        <li>National political trends that could further embolden local reactionary forces.</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="mt-6 text-gray-600 leading-relaxed">This SWOT analysis underscores that while the path to transformative change in Arkansas is fraught with significant obstacles, it is by no means impossible. Strategic action must focus on amplifying internal strengths (like grassroots energy and moral clarity), mitigating internal weaknesses (such as resource gaps and fragmentation), proactively seizing external opportunities (like public discontent and ruling class divisions), and developing robust countermeasures to the formidable external threats. The interplay of these factors will determine the future trajectory of the Arkansas "market" and the potential for creating a society that prioritizes human needs and ecological sustainability over corporate profit and elite power.</p>
+        </section>
+
+        <section id="market-evolution" class="card">
+            <h2 class="section-title">Market Evolution: Historical Forces Shaping Today's Landscape</h2>
+            <p class="mb-6 text-gray-700 leading-relaxed">The contemporary political-economic "market" of Arkansas is not a recent phenomenon but the product of centuries of historical development, marked by foundational acts of dispossession, systems of brutal exploitation, and periods of intense social struggle. Understanding these deep historical roots—from Indigenous removal and chattel slavery to the rise of corporate agribusiness and the persistent fight for civil and labor rights—is indispensable for comprehending the entrenched nature of current power structures and the enduring legacies of oppression that continue to shape market dynamics. This historical context also reveals a rich, though often suppressed, tradition of resistance and radical organizing, offering crucial lessons and inspiration for present-day movements seeking transformative change. The echoes of these past events resonate strongly in today's policy debates, social relations, and the very geography of power and inequality across the state.</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <h4 class="font-semibold text-lg mb-1 accent-text-red">Early 19th Century: Indigenous Dispossession</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">Forced removal of Quapaw, Osage, and Caddo peoples, establishing the groundwork for a settler-colonial economy based on land extraction and, subsequently, plantation agriculture. This foundational act of violent market creation established patterns of resource control and racial hierarchy that persist. The "clearing" of the land for white settlement and capitalist exploitation was a brutal precursor to all subsequent market developments.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <h4 class="font-semibold text-lg mb-1 accent-text-red">Antebellum Period (Pre-1861): Plantation Economy & Slavery</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">The Arkansas Delta's economy became heavily reliant on enslaved Black labor for cotton production, entrenching a powerful planter oligarchy and codifying white supremacy as the dominant market ideology. This period cemented extreme wealth inequality and a racialized class system, the legacies of which are still profoundly felt in land ownership patterns, economic disparities, and social relations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <h4 class="font-semibold text-lg mb-1 accent-text-red">1919: Elaine Massacre</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">Brutal suppression of Black sharecroppers organizing for fair payment, highlighting the violent enforcement of exploitative labor relations and racial terror to protect agricultural capital. This event underscored the extreme measures the ruling class would take to crush any challenge to its economic dominance and white supremacist order, serving as a chilling deterrent to labor and civil rights organizing for decades.</p>
+                    </div>
+                </div>
+                 <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <h4 class="font-semibold text-lg mb-1 accent-text-green">1930s: Southern Tenant Farmers Union (STFU)</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">Formation of an interracial union of sharecroppers and tenant farmers in the Arkansas Delta, courageously challenging planter exploitation and advocating for economic justice during the Great Depression. The STFU, despite facing intense repression, demonstrated the potential for cross-racial working-class solidarity and radical organizing in the heart of the Jim Crow South, offering a powerful counter-narrative to the dominant market forces.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <h4 class="font-semibold text-lg mb-1 accent-text-yellow">1944-1947: "Right-to-Work" Enactment</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">Arkansas became one ofthe first states to pass "Right-to-Work" legislation, significantly weakening labor unions and ensuring a low-wage environment attractive to capital. This was a strategic move by business interests to curb worker power and maintain a pliable labor market, shaping the state's industrial development for decades to come.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <h4 class="font-semibold text-lg mb-1 accent-text-blue">1957: Little Rock Central High Crisis</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">A major flashpoint in the Civil Rights Movement, exposing deep-seated white resistance to racial desegregation and requiring federal intervention. This event highlighted the role of the state in upholding segregationist policies and the immense struggle required to achieve even basic civil rights, profoundly impacting the social and political market for decades.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <h4 class="font-semibold text-lg mb-1 accent-text-red">Post-WWII: Rise of Corporate Agribusiness & Retail</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">Shift towards dominance by large corporations like Tyson Foods and Walmart, transforming the state's economy and concentrating immense political-economic power. This era saw the industrialization of agriculture and the globalization of retail supply chains, with profound impacts on labor, small businesses, and the environment, establishing the corporate titans that heavily influence today's market.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-6 text-gray-600 leading-relaxed">This selective timeline illustrates how historical power struggles and economic transformations have forged the contemporary Arkansas market. Each event represents a critical juncture where dominant forces consolidated their power or where resistance movements emerged to challenge the status quo. Acknowledging this complex past is essential for any strategic intervention aimed at creating a more just and equitable future, as the patterns of exploitation and resistance are deeply woven into the fabric of the state's political economy. The fight for a different kind of market—one that serves human needs rather than corporate greed—is a continuation of these historical struggles.</p>
+        </section>
+
+        <section id="future-outlook" class="card">
+            <h2 class="section-title">Future Outlook & Opportunities for "Market Disruption"</h2>
+            <p class="mb-6 text-gray-700 leading-relaxed">The future trajectory of the Arkansas political-economic "market" will be determined by the ongoing struggle between entrenched reactionary forces seeking to maintain and expand their hegemony, and the diverse, growing movements advocating for systemic change and liberation. While the dominant trends point towards continued corporate consolidation and social conservatism, the inherent contradictions of this system, coupled with rising public discontent and organized resistance, create significant opportunities for "market disruption" – that is, for a fundamental reordering of power relations and economic priorities. The path forward for progressive and revolutionary forces requires a clear-eyed assessment of these dynamics and the adoption of multifaceted strategies that build broad-based power from the ground up. This involves not only resisting harmful policies but actively constructing and promoting viable alternatives that can capture the public imagination and meet the material needs of the majority. The struggle for a just future in Arkansas is undoubtedly challenging, but it is far from hopeless; it is a dynamic contest where strategic intervention and sustained organizing can yield transformative results.</p>
+
+            <h3 class="sub-section-title accent-text-green">Strategic Imperatives for Transformative Change:</h3>
+            <ul class="list-disc pl-5 space-y-3 text-gray-700 leading-relaxed">
+                <li>
+                    <strong class="text-gray-800">Intensify Ideological Warfare & Build Revolutionary Consciousness:</strong> This necessitates a relentless deconstruction of dominant capitalist and reactionary narratives, replacing them with accessible, compelling analyses rooted in Marxist, intersectional, and anti-imperialist frameworks. This involves creating alternative media platforms, conducting popular political education, and fostering critical thinking within communities to inoculate against ruling class propaganda and build a shared understanding of systemic oppression and the pathways to liberation.
+                </li>
+                <li>
+                    <strong class="text-gray-800">Forge a United Front of the Oppressed through Intersectional Solidarity:</strong> The power of resistance movements lies in their ability to unite diverse constituencies around shared interests and common enemies. This requires actively building strong, principled coalitions across racial, economic, environmental, gender, and sexuality lines, ensuring that the leadership and concerns of the most marginalized communities are centered. Such a united front can amplify collective power and present a formidable challenge to the divide-and-conquer tactics of the ruling class.
+                </li>
+                <li>
+                    <strong class="text-gray-800">Directly Target Corporate Power & Undermine Its Material Foundations:</strong> Corporate capital is the bedrock of the current oppressive system. Strategic campaigns targeting key corporations (e.g., Walmart, Tyson, Entergy) through boycotts, divestment, labor organizing, and direct action can disrupt their operations, expose their exploitative practices, and build leverage for concrete concessions. Simultaneously, promoting worker cooperatives, community land trusts, and other alternative economic models can begin to build a democratic economy from below.
+                </li>
+                <li>
+                    <strong class="text-gray-800">Exploit Ruling Class Contradictions & Political Vulnerabilities:</strong> The ruling bloc is not monolithic. Revolutionary strategy must skillfully identify and exploit internal divisions, such as tensions between different capitalist factions or the backlash against extremist policies. Mobilizing public discontent around issues like healthcare, education, and environmental degradation can create political crises for those in power and open spaces for progressive alternatives to gain traction.
+                </li>
+                <li>
+                    <strong class="text-gray-800">Develop Independent Political Power & Dual Power Structures:</strong> While tactical engagement with the bourgeois electoral system may sometimes be necessary, the long-term goal must be to build independent political power outside of and in opposition to the capitalist state. This involves creating grassroots democratic institutions—people's assemblies, workers' councils, neighborhood committees—that can begin to exercise popular control over community resources and decision-making, forming the basis of a dual power situation that can ultimately challenge state authority.
+                </li>
+                <li>
+                    <strong class="text-gray-800">Reclaim Historical Narratives & Foster a Revolutionary Tradition:</strong> Countering the ruling class's version of history by popularizing Arkansas's rich legacy of populist, labor, and civil rights struggles is essential for building collective identity, instilling hope, and providing strategic lessons for contemporary movements. Connecting local struggles to national and international liberation movements further strengthens this revolutionary tradition.
+                </li>
+            </ul>
+            <p class="mt-8 text-center font-semibold text-xl accent-text-blue">The struggle for a liberated Arkansas is a protracted one, demanding unwavering commitment, strategic acumen, and profound solidarity. The time for incremental adjustments has passed; the imperative is for fundamental, revolutionary transformation.</p>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 bg-gray-800 text-gray-300">
+        <p>&copy; 2025 Praxis Strategic Market Intelligence (v3.1). For internal revolutionary analysis only.</p>
+        <p class="text-sm">This infographic was generated based on the "Arkansas Political Power Map" (PRAXIS_MAP_AR_001.2).</p>
+    </footer>
+
+    <script>
+        const chartJsTooltipCallbacks = {
+            title: function(tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                  return label.join(' ');
+                } else {
+                  return label;
+                }
+            }
+        };
+
+        function processLabels(originalLabels) {
+            return originalLabels.map(label => {
+                if (typeof label === 'string' && label.length > 16) {
+                    const words = label.split(' ');
+                    const newLabel = [];
+                    let currentLine = '';
+                    words.forEach(word => {
+                        if ((currentLine + word).length > 16 && currentLine.length > 0) {
+                            newLabel.push(currentLine.trim());
+                            currentLine = word + ' ';
+                        } else {
+                            currentLine += word + ' ';
+                        }
+                    });
+                    if (currentLine.trim().length > 0) {
+                        newLabel.push(currentLine.trim());
+                    }
+                    return newLabel;
+                }
+                return label;
+            });
+        }
+
+        const influenceShareData = {
+            labels: processLabels(['Retail & Logistics (e.g., Walmart)', 'Agribusiness (e.g., Tyson)', 'Finance & Investment (e.g., Stephens Inc.)', 'Energy & Utilities (e.g., Entergy)', 'Healthcare Sector', 'Other Corporate Interests']),
+            datasets: [{
+                label: 'Influence Share',
+                data: [30, 25, 20, 10, 10, 5],
+                backgroundColor: ['#FF6B6B', '#FFD166', '#06D6A0', '#118AB2', '#073B4C', '#788696'],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+        new Chart(document.getElementById('influenceShareChart'), {
+            type: 'doughnut',
+            data: influenceShareData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: '#073B4C' } },
+                    tooltip: { callbacks: chartJsTooltipCallbacks }
+                }
+            }
+        });
+
+        const lobbyingSpendData = {
+            labels: processLabels(['Walmart Inc.', 'Tyson Foods', 'Entergy Arkansas', 'Stephens Inc. (Indirect/Affiliates)', 'AR State Chamber of Commerce', 'AR Farm Bureau']),
+            datasets: [{
+                label: 'Illustrative Annual Lobbying Spend ($M)',
+                data: [2.5, 2.1, 1.8, 1.5, 1.2, 1.0],
+                backgroundColor: ['#118AB2', '#06D6A0', '#FFD166', '#FF6B6B', '#073B4C', '#4A5568'],
+                borderColor: '#ffffff',
+                borderWidth: 1
+            }]
+        };
+        new Chart(document.getElementById('lobbyingSpendChart'), {
+            type: 'bar',
+            data: lobbyingSpendData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: { ticks: { color: '#073B4C' }, grid: { color: '#e2e8f0'} },
+                    y: { ticks: { color: '#073B4C' }, grid: { display: false } }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: chartJsTooltipCallbacks }
+                }
+            }
+        });
+
+        const policyImpactData = {
+            labels: processLabels(['Low-Income Families', 'Rural Communities', 'Urban Working Class', 'Communities of Color', 'Small Businesses', 'Large Corporations']),
+            datasets: [
+                {
+                    label: 'Negative Impact (Illustrative Score)',
+                    data: [8, 7, 6, 9, 5, 1],
+                    backgroundColor: '#FF6B6B',
+                },
+                {
+                    label: 'Neutral/Mixed Impact',
+                    data: [1, 2, 2, 1, 3, 2],
+                    backgroundColor: '#FFD166',
+                },
+                {
+                    label: 'Positive Impact (Illustrative Score)',
+                    data: [1, 1, 2, 0, 2, 7],
+                    backgroundColor: '#06D6A0',
+                }
+            ]
+        };
+        new Chart(document.getElementById('policyImpactChart'), {
+            type: 'bar',
+            data: policyImpactData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { stacked: true, ticks: { color: '#073B4C' }, grid: { color: '#e2e8f0'} },
+                    y: { stacked: true, ticks: { color: '#073B4C' }, grid: { display: false } }
+                },
+                plugins: {
+                    legend: { position: 'top', labels: { color: '#073B4C' } },
+                    tooltip: { callbacks: chartJsTooltipCallbacks, mode: 'index', intersect: false }
+                }
+            }
+        });
+
+        const policyTrendData = {
+            labels: ['2015', '2017', '2019', '2021', '2023', '2025 (Proj.)'],
+            datasets: [
+                {
+                    label: 'Privatization Index',
+                    data: [3, 4, 5, 6, 8, 9],
+                    borderColor: '#FF6B6B',
+                    backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                    fill: true,
+                    tension: 0.3
+                },
+                {
+                    label: 'Deregulation Index',
+                    data: [4, 5, 5, 7, 7, 8],
+                    borderColor: '#FFD166',
+                    backgroundColor: 'rgba(255, 209, 102, 0.1)',
+                    fill: true,
+                    tension: 0.3
+                },
+                {
+                    label: 'Grassroots Resistance Index',
+                    data: [2, 3, 4, 5, 6, 7],
+                    borderColor: '#06D6A0',
+                    backgroundColor: 'rgba(6, 214, 160, 0.1)',
+                    fill: true,
+                    tension: 0.3
+                }
+            ]
+        };
+        new Chart(document.getElementById('policyTrendChart'), {
+            type: 'line',
+            data: policyTrendData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, ticks: { color: '#073B4C' }, grid: { color: '#e2e8f0'} },
+                    x: { ticks: { color: '#073B4C' }, grid: { display: false } }
+                },
+                plugins: {
+                    legend: { position: 'top', labels: { color: '#073B4C' } },
+                    tooltip: { callbacks: chartJsTooltipCallbacks, mode: 'index', intersect: false }
+                }
+            }
+        });
+
+        const navLinks = document.querySelectorAll('#infographic-nav a');
+        const sections = document.querySelectorAll('main section');
+
+        function changeActiveLink() {
+            let index = sections.length;
+            while(--index && window.scrollY + 100 < sections[index].offsetTop) {}
+            navLinks.forEach((link) => link.classList.remove('active'));
+            if (navLinks[index]) {
+                 navLinks[index].classList.add('active');
+            }
+        }
+        changeActiveLink();
+        window.addEventListener('scroll', changeActiveLink);
+
+    </script>
+</body>
+</html>
